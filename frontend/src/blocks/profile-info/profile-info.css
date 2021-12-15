@@ -1,0 +1,14 @@
+.profile-info {
+  margin-top: 22.25px;
+  max-width: calc(100% - 38px);
+  text-align: center;
+}
+
+@media (min-width: 1024px) {
+  .profile-info {
+    flex-grow: 1; /*вместо margin-right: 244px; и не нужно max-width: 336px;*/
+    margin-left: 30px;
+    text-align: left;
+    align-self: baseline;
+  }
+}

@@ -1,0 +1,14 @@
+.header__logo {
+  padding: 28px 27px 31.6px;
+  max-width: 103.74px;
+  max-height: 24.4px;
+  vertical-align: top; /* чтобы убрать дополнительное место,которое браузер резервирует под инлайновым элементом, чтобы туда выносить «хвосты» букв*/
+}
+
+@media (min-width: 768px) {
+  .header__logo  {
+    padding: 45px 0 41px;
+    max-width: 142px;
+    max-height: 33px;
+  }
+}

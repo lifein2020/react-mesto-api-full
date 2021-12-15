@@ -1,0 +1,31 @@
+.elements {
+  max-width: calc(100% - 38px);
+  margin: 36px auto 48px;
+  display: grid;
+  row-gap: 20px;
+  column-gap: 17px;
+  grid-template-columns: repeat(auto-fill, minmax(282px, max-content));
+  justify-content: center;
+  /*justify-items: center;
+  align-items: center;*/
+}
+
+@media (min-width: 768px) {
+  .elements {
+    max-width: calc(100% - 180px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .elements {
+    margin: 46.25px auto 67px;
+    max-width: calc(100% - 144px);
+  }
+}
+
+@media (min-width: 1280px) {
+  .elements {
+    max-width: calc(100% - 400px);
+  }
+}
+

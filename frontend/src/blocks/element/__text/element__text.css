@@ -1,0 +1,6 @@
+.element__text {
+  margin: 25px 20px 31px 21px;
+  min-width: 246px;
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,23 @@
+.header__sign-link {
+    margin-right: 30px;
+    text-decoration: none;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    text-align: right;
+    color: #FFFFFF;
+    opacity: 1;
+    transition: opacity .1s ease-in;
+}
+  
+.header__sign-link:hover {
+    opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+    .header__sign-link {
+        margin-right: 0;
+    }      
+}

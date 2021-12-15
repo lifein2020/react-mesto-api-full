@@ -1,0 +1,8 @@
+.element__trash_visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.element__trash_visible:hover {
+  opacity: 0.6;
+}

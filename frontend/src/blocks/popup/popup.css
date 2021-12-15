@@ -1,0 +1,21 @@
+.popup {
+  display: flex; /*чтобы попап отавался по центру  в невидимом состоянии, и в видимом*/
+  max-width: calc(100% - 38px);
+  margin: auto;
+  font-family: Inter, Arial, Helvetica, sans-serif;
+  /*display: none; уже не нужен*/
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .5);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+  /*плавное открытие и закрытие*/
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility .3s, opacity .3s linear;
+}
+

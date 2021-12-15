@@ -1,0 +1,14 @@
+.element__count {
+  margin: auto;
+  padding: 0;
+  border-style: none;
+  width: 10px;
+  height: 13px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  text-align: center;
+}
+

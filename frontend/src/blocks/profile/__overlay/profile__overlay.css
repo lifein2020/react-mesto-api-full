@@ -1,0 +1,22 @@
+.profile__overlay {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -khtml-border-radius: 50%;
+  opacity: 0;
+  transition: opacity .1s ease-in;
+  border: none;
+}
+
+.profile__overlay:hover {
+  opacity: 0.8;
+}

@@ -1,0 +1,12 @@
+.popup__input_type_error {
+  border-bottom: 1px solid #FF0000;
+    /*font-family: Inter, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 15px;
+    color: #FF0000;
+    height: 12px;
+    opacity: 0;*/
+    /*position: absolute;*/
+}

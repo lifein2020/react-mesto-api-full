@@ -1,0 +1,14 @@
+.header__logout {
+    padding: 0;
+    width: 56px;
+    height: 22px;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+    font-family: Inter, Arial, Helvetica, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    color: #A9A9A9;
+    }

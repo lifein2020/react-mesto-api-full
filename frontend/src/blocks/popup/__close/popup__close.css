@@ -1,0 +1,28 @@
+.popup__close {
+  padding: 0;
+  width: 36.77px;
+  height: 36.77px;
+  background-size: cover;
+  position: absolute;
+  top: -50.39px;
+  right: 0;  /*left: calc(100% - 36.77px);  Слишком большое значение*/
+  background-color: transparent;
+  background-image: url(../../../images/close_icon.png);
+  cursor: pointer;
+  border-style: none;
+  opacity: 1;
+  transition: opacity .1s ease-in; /*переход работает и при наведении курсора, и при его снятии.*/
+}
+
+.popup__close:hover {
+  opacity: 0.6;
+}
+
+@media (min-width: 768px) {
+  .popup__close {
+    width: 56px;
+    height: 56px;
+    top: -48px;
+    right: -50px;
+  }
+}

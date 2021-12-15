@@ -1,0 +1,10 @@
+.form__link {
+    margin-top: 20px;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .form__link {
+        margin-top: 15px;
+    }
+}
