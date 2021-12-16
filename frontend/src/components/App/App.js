@@ -71,6 +71,8 @@ function App() {
   useEffect(() => {
     Promise.all([api.getUserInfo(), api.getCardsList()])
     .then(([userData, cardsArray]) => {
+      // console.log(userData);
+      // console.log(cardsArray);
       setCurrentUser({
         name: userData.name, 
         about: userData.about, 
@@ -177,10 +179,10 @@ function App() {
   
 
   const authUser = (jwt) => {
-    console.log(jwt);
+    // console.log(jwt);
     return auth.getContent(jwt)
     .then((res) => {
-      console.log(res);
+      // console.log(res);
       if (res) {
         setLoggedIn(true);
         setUserEmail(res.data.email);
@@ -189,14 +191,16 @@ function App() {
     .catch(err => console.log(err));
   };
 
+  // если у пользователя есть токен в localStorage, проверит валидность токена
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
-    console.log(jwt);
+    // console.log(jwt);
     if (jwt) {
       authUser(jwt);
     }
   }, [loggedIn]);
 
+  //если пользователь авторизован, проходит в систему
   useEffect(() => {
     if (loggedIn) {
       history.push('/');
@@ -206,7 +210,7 @@ function App() {
   const handleRegister = ({ password, email }) => {
     return auth.register(password, email)
     .then(dataReg => {
-      console.log(dataReg);
+      // console.log(dataReg);
       if (dataReg.data._id || dataReg.statusCode !== 400) {
         setUserEmail(dataReg.data.email);
         history.push('/sign-in');
@@ -227,9 +231,9 @@ function App() {
     return auth.authorize(password, email)
     .then(dataLog => {
       if (dataLog.token || dataLog.statusCode === 200) {
-        setLoggedIn(true);
+        setLoggedIn(true); //чтобы ProtectedRoute отображал маршрут /
         localStorage.setItem('jwt', dataLog.token);
-        history.push('/');
+        history.push('/'); //очищаем стейт и перенаправляем пользователя на страницу /
         setUserEmail(email);
       } else {
           return

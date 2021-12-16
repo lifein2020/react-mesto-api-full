@@ -40,7 +40,7 @@ function Register({onRegister}) {
                 autoComplete="on"
                 required
                 placeholder="Email"
-                value={userEmail}
+                value={userEmail || ''}
                 onChange={handleChangeUserEmail}
             />
             <input 
@@ -51,7 +51,7 @@ function Register({onRegister}) {
                 autoComplete="off"
                 required
                 placeholder="Пароль"
-                value={userPassword}
+                value={userPassword || ''}
                 onChange={handleChangeUserPassword}
             ></input>
             <button type="submit" className="form__button">Зарегистрироваться</button>

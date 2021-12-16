@@ -108,7 +108,8 @@ const api = new Api({
   baseUrl: 'http://localhost:3005/',
   headers: {
     // authorization: 'd11963a5-3631-4d4e-b873-aed64d959e3c',
-    authorization: `Bearer ${localStorage.getItem("jwt")}`,
+    // authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWJhZmZmMDViNTZjZDJiM2ZlNDU5YzIiLCJpYXQiOjE2Mzk2NDUzOTQsImV4cCI6MTY0MDI1MDE5NH0.wcQPT2Qyf7_1bmNWJTi9xs0PstuMY3w_8tzmN7N2lB4`, 
+    'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json'
   }
 });

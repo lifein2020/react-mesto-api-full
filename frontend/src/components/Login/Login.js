@@ -37,7 +37,7 @@ function Login({onLogin}) {
                     autoComplete="on"
                     required
                     placeholder="Email"
-                    value={userEmail}
+                    value={userEmail || ''}
                     onChange={handleChangeUserEmail}
                 />
                 <input 
@@ -48,7 +48,7 @@ function Login({onLogin}) {
                     autoComplete="off"
                     required
                     placeholder="Пароль"
-                    value={userPassword}
+                    value={userPassword || ''}
                     onChange={handleChangeUserPassword}
                 ></input>
                 <button type="submit" className="form__button">Войти</button>
