@@ -67,19 +67,17 @@ function App() {
   //1.
   const [currentUser, setCurrentUser] = useState({name: 'Жак-Ив Кусто', about: 'Исследователь океана', avatar: kusto});
   const [cards, setCards] = useState([]);
-  //2.
+  
   useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getCardsList()])
-    .then(([userData, cardsArray]) => {
-      // console.log(userData);
-      // console.log(cardsArray);
+    Promise.all([api.getUserInfo(), api.getCardsList()]) //получаем данные с сервера
+    .then(([userData, cardsArray]) => { // передаем эти данные для отрисовки на странице, см в консоли формат в котором приходят. Если правильно передали, то в Main передадуться чнрез props
       setCurrentUser({
-        name: userData.name, 
-        about: userData.about, 
-        avatar: userData.avatar,
-        _id: userData._id,
+        name: userData.data.name, 
+        about: userData.data.about, 
+        avatar: userData.data.avatar,
+        _id: userData.data._id,
       });
-      setCards(cardsArray);
+      setCards(cardsArray.data);
     })
     .catch((err) => {
       console.log(err);
@@ -89,10 +87,18 @@ function App() {
   //3.
   const handleCardLike = (card) => {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(i => i._id === currentUser._id);
+    const isLiked = card.likes.some(i => i._id === currentUser._id); // из 12спринта
+    // const isLiked = card.likes.some(i => currentUser._id === i); 
+    console.log(isLiked);
+    // console.log(card.owner);
+    //console.log(currentUser);
+    //console.log(card.likes);
+    //console.log(card._id);
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card._id, isLiked)
     .then((newCard) => {
+        console.log(newCard);
+      
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
     })
     .catch((err) => {
@@ -117,10 +123,10 @@ function App() {
     api.patchUserInfo({userName, userDescription}) 
     .then((dataProfile) => {
       setCurrentUser({
-        name: dataProfile.name, 
-        about: dataProfile.about,
-        avatar: dataProfile.avatar, // чтобы аватар тоже отображался 
-        _id: dataProfile._id, //чтобы лайки проставлялись после обновления профиля
+        name: dataProfile.data.name, 
+        about: dataProfile.data.about,
+        avatar: dataProfile.data.avatar, // чтобы аватар тоже отображался 
+        _id: dataProfile.data._id, //чтобы лайки проставлялись после обновления профиля
       });
       //handleAllPopupsClose();
     })
@@ -138,11 +144,11 @@ function App() {
     api.patchAvatarUser({ avatarUrl })
     .then((dataProfile) => {
       setCurrentUser({
-        avatar: dataProfile.avatar,
+        avatar: dataProfile.data.avatar,
         //чтобы данные профиля тоже отображались 
-        name: dataProfile.name, 
-        about: dataProfile.about,
-        _id: dataProfile._id,
+        name: dataProfile.data.name, 
+        about: dataProfile.data.about,
+        _id: dataProfile.data._id,
       });
       handleAllPopupsClose();
     })
@@ -155,7 +161,7 @@ function App() {
   function handleAddPlaceSubmit({ card_name, card_image_link }) {
     api.postAddCard({ card_name, card_image_link })
     .then(newCard => {
-      setCards([newCard, ...cards]);
+      setCards([newCard.data, ...cards]);
       handleAllPopupsClose();
     })
     .catch((err) => {
@@ -179,13 +185,14 @@ function App() {
   
 
   const authUser = (jwt) => {
-    // console.log(jwt);
+    console.log(jwt);
     return auth.getContent(jwt)
     .then((res) => {
-      // console.log(res);
+      console.log(res)
       if (res) {
         setLoggedIn(true);
         setUserEmail(res.data.email);
+        
       }
     })
     .catch(err => console.log(err));
@@ -194,7 +201,7 @@ function App() {
   // если у пользователя есть токен в localStorage, проверит валидность токена
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
-    // console.log(jwt);
+    console.log(jwt);
     if (jwt) {
       authUser(jwt);
     }
@@ -210,7 +217,7 @@ function App() {
   const handleRegister = ({ password, email }) => {
     return auth.register(password, email)
     .then(dataReg => {
-      // console.log(dataReg);
+       console.log(dataReg);
       if (dataReg.data._id || dataReg.statusCode !== 400) {
         setUserEmail(dataReg.data.email);
         history.push('/sign-in');
@@ -230,11 +237,12 @@ function App() {
   const handleLogin = ({ password, email }) => {
     return auth.authorize(password, email)
     .then(dataLog => {
+      // console.log(dataLog);
       if (dataLog.token || dataLog.statusCode === 200) {
         setLoggedIn(true); //чтобы ProtectedRoute отображал маршрут /
         localStorage.setItem('jwt', dataLog.token);
         history.push('/'); //очищаем стейт и перенаправляем пользователя на страницу /
-        setUserEmail(email);
+        setUserEmail(dataLog.data.email);
       } else {
           return
       }

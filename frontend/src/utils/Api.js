@@ -14,7 +14,6 @@ class Api {
 
   // Получение данных пользователя(моих)
   getUserInfo() {
-    console.log(this.headers);
     return fetch(this.baseUrl + 'users/me', {
       headers: this.headers
     }).then(this._getResponse);
@@ -85,7 +84,7 @@ class Api {
   // Удалить лайк:
   //--------- 2 вариант рабочий----------
   deliteLikeCard(id) {
-    return fetch(`${this.baseUrl}cards/likes/${id}`, {
+    return fetch(`${this.baseUrl}cards/${id}/likes`, {
       method: 'DELETE',
       headers: this.headers
     })
@@ -94,7 +93,7 @@ class Api {
 
   //-------- 1 вариант рабочий---------
   changeLikeCardStatus(id, like) {
-    return fetch(`${this.baseUrl}cards/likes/${id}`, {
+    return fetch(`${this.baseUrl}cards/${id}/likes`, {
       method: like ? 'DELETE' : 'PUT', //если карточка уже лайкнута(черный лайк), то удалить лайк, иначе поставить
       headers: this.headers
     })
@@ -108,7 +107,9 @@ const api = new Api({
   baseUrl: 'http://localhost:3005/',
   headers: {
     // authorization: 'd11963a5-3631-4d4e-b873-aed64d959e3c',
-    // authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWJhZmZmMDViNTZjZDJiM2ZlNDU5YzIiLCJpYXQiOjE2Mzk2NDUzOTQsImV4cCI6MTY0MDI1MDE5NH0.wcQPT2Qyf7_1bmNWJTi9xs0PstuMY3w_8tzmN7N2lB4`, 
+    //authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWJkMjZjYmMwMjdiOTZkODNiNGRhYTYiLCJpYXQiOjE2Mzk3ODcwNzIsImV4cCI6MTY0MDM5MTg3Mn0.7OxUJnliCmyvNERrzT6ZUFuKOB-jVOYHXneoBliIUhI`, 
+    // authorization: null,
+    //'Authorization': `Bearer` + JSON.parse(localStorage.getItem('token')),
     'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
     'Content-Type': 'application/json'
   }

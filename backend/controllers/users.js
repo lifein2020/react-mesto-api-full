@@ -176,6 +176,7 @@ const login = (req, res, next) => {
   const { email, password } = req.body;
   return User.findUserByCredentials(email, password)
     .then((user) => {
+      console.log(user);
       // аутентификация успешна! пользователь в переменной user
       // создадим токен
       const token = jwt.sign(
@@ -186,7 +187,7 @@ const login = (req, res, next) => {
         NODE_ENV !== 'production' ? JWT_SECRET : 'prod-secret',
         { expiresIn: '7d' },
       );
-
+      console.log(token);
       // вернём токен в теле ответа
       res.send({ token }); // или заголовок Set-Cookie
       // return res.status(200).send({ token });
