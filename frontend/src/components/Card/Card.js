@@ -20,7 +20,21 @@ function Card(props) {
   
     // Определить, поставили ли мы уже «лайк» этой карточке:
     // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
-    const isLiked = props.card.likes.some(i => i.id === currentUser._id);
+    // const isLiked = props.card.likes.some(i => i._id === currentUser._id);
+    // console.log(props.card.likes);
+    const isLiked = props.card.likes.some(i => i === currentUser._id);
+    // const isLiked = Array.from(props.card.likes).some(i => i === currentUser._id);
+    /* let isLiked = false;
+    props.card.likes.forEach((i) => { 
+        if (i === currentUser._id) { 
+            return isLiked = true;
+        }
+    }); */
+    console.log(props.card);
+    // console.log(currentUser);
+    //console.log(props.card.likes);
+    //console.log(props.card.likes.id);
+    //console.log(props.card.likes.i);
     //console.log(props.card.likes.[0]);
     //console.log(props.card.likes.[1]);
 

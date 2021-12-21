@@ -87,19 +87,14 @@ function App() {
   //3.
   const handleCardLike = (card) => {
     // Снова проверяем, есть ли уже лайк на этой карточке
-    const isLiked = card.likes.some(i => i._id === currentUser._id); // из 12спринта
-    // const isLiked = card.likes.some(i => currentUser._id === i); 
+    //const isLiked = card.likes.some(i => i._id === currentUser._id); // из 12спринта
+     const isLiked = card.likes.some(i => i === currentUser._id); 
     console.log(isLiked);
-    // console.log(card.owner);
-    //console.log(currentUser);
-    //console.log(card.likes);
-    //console.log(card._id);
     // Отправляем запрос в API и получаем обновлённые данные карточки
     api.changeLikeCardStatus(card._id, isLiked)
     .then((newCard) => {
-        console.log(newCard);
-      
-        setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+        //setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
+        setCards((state) => state.map((c) => c === card._id ? newCard : c));
     })
     .catch((err) => {
       console.log(err);
@@ -122,10 +117,12 @@ function App() {
     // отправляем значения инпутов(то, что ввели)
     api.patchUserInfo({userName, userDescription}) 
     .then((dataProfile) => {
+      console.log(dataProfile)
       setCurrentUser({
         name: dataProfile.data.name, 
         about: dataProfile.data.about,
         avatar: dataProfile.data.avatar, // чтобы аватар тоже отображался 
+        likes: dataProfile.data.likes,
         _id: dataProfile.data._id, //чтобы лайки проставлялись после обновления профиля
       });
       //handleAllPopupsClose();
@@ -142,7 +139,9 @@ function App() {
   const handleUpdateAvatar = ({ avatarUrl }) => {
     //отправляем то, что ввели в инпут
     api.patchAvatarUser({ avatarUrl })
+    
     .then((dataProfile) => {
+     // console.log(dataProfile);
       setCurrentUser({
         avatar: dataProfile.data.avatar,
         //чтобы данные профиля тоже отображались 
@@ -161,6 +160,7 @@ function App() {
   function handleAddPlaceSubmit({ card_name, card_image_link }) {
     api.postAddCard({ card_name, card_image_link })
     .then(newCard => {
+      console.log(newCard)
       setCards([newCard.data, ...cards]);
       handleAllPopupsClose();
     })
