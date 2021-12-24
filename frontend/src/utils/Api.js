@@ -15,18 +15,16 @@ class Api {
   // Получение данных пользователя(моих)
   getUserInfo() {
     return fetch(this.baseUrl + 'users/me', {
-      // headers: this.headers
       headers: {
         ...this.headers,
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
       }
     }).then(this._getResponse);
   }
-
+ 
   // Получение данных всех карточек
   getCardsList() {
     return fetch(this.baseUrl + 'cards', { // либо `${this.baseUrl}cards` и в результате конкатенации получается https://mesto.nomoreparties.co/v1/cohort-26/cards
-      // headers: this.headers
       headers: {
         ...this.headers,
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
@@ -42,7 +40,6 @@ class Api {
         name: card_name,
         link: card_image_link
       }),
-      // headers: this.headers
       headers: {
         ...this.headers,
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
@@ -58,7 +55,6 @@ class Api {
         name: userName,
         about: userDescription,
       }),
-      // headers: this.headers
       headers: {
         ...this.headers,
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
@@ -74,7 +70,6 @@ class Api {
       body: JSON.stringify({
         avatar: avatarUrl
       }),
-      // headers: this.headers
       headers: {
         ...this.headers,
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
@@ -87,7 +82,6 @@ class Api {
   deleteCard(id) {
     return fetch(`${this.baseUrl}cards/${id}`, {
       method: 'DELETE',
-      // headers: this.headers
       headers: {
         ...this.headers,
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
@@ -119,7 +113,6 @@ class Api {
   changeLikeCardStatus(id, isLiked) {
     return fetch(`${this.baseUrl}cards/${id}/likes`, {
       method: isLiked ? 'DELETE' : 'PUT', //если карточка уже лайкнута(черный лайк), то удалить лайк, иначе поставить
-      // headers: this.headers
       headers: {
         ...this.headers,
         'Authorization': `Bearer ${localStorage.getItem('jwt')}`,
@@ -137,11 +130,3 @@ const api = new Api({
 });
 
 export default api;
-
-// baseUrl: 'https://mesto.nomoreparties.co/v1/cohort-26/',
-// authorization: null,
-    // authorization: 'd11963a5-3631-4d4e-b873-aed64d959e3c',
-    //authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MWJkMjZjYmMwMjdiOTZkODNiNGRhYTYiLCJpYXQiOjE2Mzk3ODcwNzIsImV4cCI6MTY0MDM5MTg3Mn0.7OxUJnliCmyvNERrzT6ZUFuKOB-jVOYHXneoBliIUhI`, 
-    
-    //'Authorization': `Bearer` + JSON.parse(localStorage.getItem('token')),
-    // 'Authorization': `Bearer ${localStorage.getItem('jwt')}`,

@@ -48,7 +48,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
                 placeholder="Название"
                 minLength="2"
                 maxLength="30"
-                value={cardName || ''}
+                value={cardName}
                 onChange={handleChangeCardName}
             />
             <span
@@ -63,7 +63,7 @@ function AddPlacePopup({ isOpen, onClose, onAddPlace }) {
                 autoComplete="on"
                 required
                 placeholder="Ссылка на картинку"
-                value={cardImage || ''}
+                value={cardImage}
                 onChange={handleChangeCardImage}
             />
             <span

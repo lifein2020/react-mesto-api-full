@@ -9,9 +9,7 @@ const { NODE_ENV, JWT_SECRET } = process.env;
 
 // возвращает информацию о текущем пользователе
 const getUserMe = (req, res, next) => {
-  const { payload } = req.user;
-  // console.log(req.user);
-  return User.findOne({ payload })
+  User.findOne({ _id: req.user._id })
     .then((user) => {
       res.status(200).send({ data: user });
     })
@@ -181,23 +179,12 @@ const login = (req, res, next) => {
       // создадим токен
       const token = jwt.sign(
         { _id: user._id },
-        // JWT_SECRET,
-        // NODE_ENV === 'production' ? JWT_SECRET : 'dev-secret',
-        // process.env.NODE_ENV !== 'production' ? 'dev-secret' : process.env.JWT_SECRET
         NODE_ENV !== 'production' ? JWT_SECRET : 'prod-secret',
         { expiresIn: '7d' },
       );
       console.log(token);
       // вернём токен в теле ответа
-      res.send({ token }); // или заголовок Set-Cookie
-      // return res.status(200).send({ token });
-
-      /* res.cookie('userToken', token, {
-        maxAge: 360000,
-        httpOnly: true,
-        sameSite: true,
-      }).send({ _id: user._id });
-      */
+      return res.status(200).send({ token }); // или заголовок Set-Cookie
     })
     .catch((err) => {
       // ошибка приодит из findUserByCredentials. См models - user.js - метод
