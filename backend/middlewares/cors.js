@@ -1,8 +1,10 @@
 // Разрешаем доступ с определённых источников
 const allowedCors = [
-  'https://mesto.practicum.nomoredomains.rocks',
-  'http://mesto.practicum.nomoredomains.rocks',
   'https://auth.nomoreparties.co',
+  'https://mesto.zhivtsova.nomoredomains.rocks',
+  'http://mesto.zhivtsova.nomoredomains.rocks',
+  'http://mesto.zhivtsova.nomoredomains.rocks/sign-up',
+  'http://mesto.zhivtsova.nomoredomains.rocks/sign-in',
   'http://localhost:3000/',
   'http://localhost:3000/sign-up',
   'http://localhost:3000/sign-in',
