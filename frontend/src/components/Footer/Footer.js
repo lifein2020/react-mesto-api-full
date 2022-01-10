@@ -1,7 +1,7 @@
 function Footer() {
     return (
         <footer className="footer">
-            <h3 className="footer__title">&copy; 2020 Mesto Russia</h3>
+            <h3 className="footer__title">&copy; 2022 Mesto Russia</h3>
         </footer>
        
         
@@ -18,7 +18,7 @@ function Footer() {
     return (
         <Route path="/">
             <footer className="footer">
-                <h3 className="footer__title">&copy; 2020 Mesto Russia</h3>
+                <h3 className="footer__title">&copy; 2022 Mesto Russia</h3>
             </footer>
         </Route>
         
