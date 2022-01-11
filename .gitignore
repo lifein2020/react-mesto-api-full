@@ -1,0 +1,15 @@
+# Logs
+backend/logs
+backend/*.log
+backend/npm-debug.log*
+
+# Dependency directory
+backend/node_modules
+
+# Optional npm cache directory
+backend/.npm
+
+#
+backend/.env
+
+frontend/node_modules/.cache/*
