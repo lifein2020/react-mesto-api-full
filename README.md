@@ -3,6 +3,9 @@
 # Cсылка на сайт
 http://mesto.zhivtsova.nomoredomains.rocks
 
+# Публичный IP-адрес сервера
+62.84.125.79
+
 ## Директории `backend/`
 
 `/routes` — папка с файлами роутера  
