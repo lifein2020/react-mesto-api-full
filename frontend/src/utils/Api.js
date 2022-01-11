@@ -123,7 +123,8 @@ class Api {
 }
 
 const api = new Api({
-  baseUrl: 'http://localhost:3005/',
+  // baseUrl: 'http://localhost:3005/',
+  baseUrl: 'http://api.mesto.zhivtsova.nomoredomains.rocks/',
   headers: {
     'Content-Type': 'application/json'
   }
