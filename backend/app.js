@@ -11,7 +11,6 @@ const { celebrate, Joi } = require('celebrate');
 const { errors } = require('celebrate');
 // const cookieParser = require('cookie-parser');
 
-
 //  Настроим порт, который должен слушать приложение
 const { PORT = 3005 } = process.env;
 
