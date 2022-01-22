@@ -2,6 +2,8 @@
 backend/logs
 backend/*.log
 backend/npm-debug.log*
+/backend/error.log
+/backend/request.log
 
 # Dependency directory
 backend/node_modules
