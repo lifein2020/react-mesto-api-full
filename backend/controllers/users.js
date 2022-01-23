@@ -179,7 +179,7 @@ const login = (req, res, next) => {
       // создадим токен
       const token = jwt.sign(
         { _id: user._id },
-        NODE_ENV !== 'production' ? JWT_SECRET : 'prod-secret',
+        NODE_ENV == 'production' ? JWT_SECRET : 'prod-secret',
         { expiresIn: '7d' },
       );
       console.log(token);

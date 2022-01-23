@@ -57,18 +57,20 @@ userSchema.statics.findUserByCredentials = function authenticateUser(email, pass
       if (!user) {
         const loginError = new Error('Неправильные почта и пароль'); // 'Неправильная почта'
         loginError.statusCode = 401;
-        loginError.name = 'LoginError'; // см name в  терминале
-        loginError.code = 11000;
-        throw loginError;
+        // loginError.name = 'LoginError'; // см name в  терминале
+        // loginError.code = 11000;
+        // throw loginError;
+        Promise.reject(loginError);
       }
       return bcrypt.compare(password, user.password)
         .then((matched) => {
           if (!matched) {
             const loginError = new Error('Неправильные почта и пароль'); // 'Неправильный пароль'
             loginError.statusCode = 401;
-            loginError.name = 'LoginError';
-            loginError.code = 11000;
-            throw loginError;
+            // loginError.name = 'LoginError';
+            // loginError.code = 11000;
+            // throw loginError;
+            Promise.reject(loginError);
           }
           return user; // теперь user доступен
         });

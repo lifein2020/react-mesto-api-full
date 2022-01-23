@@ -1,5 +1,3 @@
-// export const BASE_URL = 'https://auth.nomoreparties.co';
-// export const BASE_URL = 'http://localhost:3005';
 export const BASE_URL = 'http://api.mesto.zhivtsova.nomoredomains.rocks';
 
 //Проверка ответ от сервера
