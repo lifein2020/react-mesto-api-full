@@ -1,4 +1,4 @@
-export const BASE_URL = 'http://api.mesto.zhivtsova.nomoredomains.rocks';
+export const BASE_URL = 'https://api.mesto.zhivtsova.nomoredomains.rocks';
 
 //Проверка ответ от сервера
 const getResponse = (response) => {
