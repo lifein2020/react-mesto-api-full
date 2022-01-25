@@ -8,7 +8,7 @@ backend/request.log
 
 
 # Dependency directory
-backend/node_modules
+*/node_modules
 
 # Optional npm cache directory
 backend/.npm
