@@ -26,7 +26,7 @@ module.exports = (req, res, next) => {
     return handleAuthError(err);
   }
 
-  /*
+
   // Проверка.
   // Секретный ключ для верификации JWT в режиме разработки не должен верифицировать JWT продакшена.
 
@@ -57,7 +57,7 @@ module.exports = (req, res, next) => {
       );
     }
   }
-  */
+
   req.user = payload; // записываем пейлоуд в объект запроса
 
   next(); // пропускаем запрос дальше
