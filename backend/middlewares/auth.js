@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken'); // импортируем модуль jsonwebtoken Для создания токенов
 
 // const JWT_SECRET = 'the-world-is-not-enought'; // secret key for token
-const { NODE_ENV, JWT_SECRET } = process.env;
+// const { NODE_ENV, JWT_SECRET } = process.env;
+const { JWT_SECRET } = process.env;
 
 const handleAuthError = () => {
   const loginError = new Error('Необходима авторизация');
@@ -17,6 +18,7 @@ module.exports = (req, res, next) => {
   if (!authorization || !authorization.startsWith('Bearer ')) {
     return handleAuthError(res);
   }
+  /*
   // если токен на месте, извлечём его
   const token = authorization.replace('Bearer ', '');
   let payload;
@@ -25,7 +27,7 @@ module.exports = (req, res, next) => {
   } catch (err) {
     return handleAuthError(err);
   }
-
+*/
 
   // Проверка.
   // Секретный ключ для верификации JWT в режиме разработки не должен верифицировать JWT продакшена.
