@@ -15,5 +15,3 @@ backend/.npm
 
 #
 backend/.env
-
-frontend/node_modules/.cache/*
