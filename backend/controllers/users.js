@@ -2,7 +2,6 @@ const bcrypt = require('bcryptjs'); // импортируем bcrypt
 const jwt = require('jsonwebtoken');// импортируем модуль jsonwebtoken Для создания токенов
 const User = require('../models/user'); //  импортируем модель
 
-// const JWT_SECRET = 'the-world-is-not-enought';
 const { NODE_ENV, JWT_SECRET } = process.env;
 
 //  Создание документов
